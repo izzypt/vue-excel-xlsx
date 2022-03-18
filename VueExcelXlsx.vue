@@ -35,20 +35,30 @@
                 type: Function,
                 },
         },
+        data(){
+            return {
+                receivedData : [] ,
 
+            }
+        },
         methods: {
-            exportExcel() {
+            async exportExcel() {
                 let createXLSLFormatObj = [];
                 let newXlsHeader = [];
                 let vm = this;
-                
-                if (typeof vm.fetch === "function" || !vm.data) vm.data = await this.fetch();
-                
+
+                //let data = vm.data;
+                if (typeof vm.fetch === "function" || !vm.data) 
+                    vm.receivedData = await this.fetch();
+                else
+                    vm.receivedData = vm.data                
+                //console.log("incoming data: ", vm.data)
+
                 if (vm.columns.length === 0){
                     console.log("Add columns!");
                     return;
                 }
-                if (vm.data.length === 0){
+                if (vm.receivedData.length === 0){
                     console.log("Add data!");
                     return;
                 }
@@ -57,7 +67,7 @@
                 });
 
                 createXLSLFormatObj.push(newXlsHeader);
-                vm.data.map(value => {
+                vm.receivedData.map(value => {
                     let innerRowData = [];
                     
                     vm.columns.map(column => {
@@ -107,3 +117,4 @@
         },
     }
 </script>
+
