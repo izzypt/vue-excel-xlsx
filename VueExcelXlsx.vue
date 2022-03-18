@@ -30,7 +30,10 @@
                 type: String,
                 default: 'xlsx',
                 validator: (val) => ['xlsx', 'xls'].includes(val)
-            }
+            },
+            fetch: {
+                type: Function,
+                },
         },
 
         methods: {
@@ -38,6 +41,9 @@
                 let createXLSLFormatObj = [];
                 let newXlsHeader = [];
                 let vm = this;
+                
+                if (typeof vm.fetch === "function" || !vm.data) vm.data = await this.fetch();
+                
                 if (vm.columns.length === 0){
                     console.log("Add columns!");
                     return;
@@ -53,13 +59,21 @@
                 createXLSLFormatObj.push(newXlsHeader);
                 vm.data.map(value => {
                     let innerRowData = [];
-                    vm.columns.map(val => {
-                      let fieldValue = value[val.field];
-                      if (val.field.split('.').length > 1) {
-                        fieldValue = this.getNestedValue(value, val.field);
+                    
+                    vm.columns.map(column => {
+                        let fieldValue;
+                        if (typeof column.field === "object" && typeof column.field.callback === "function")
+                        {
+                            fieldValue = column.field.callback(value)
+                        }
+                        else
+                            fieldValue = value[column.field];
+
+                      if (typeof column.field === "string" && column.field.split('.').length > 1) {
+                        fieldValue = this.getNestedValue(value, column.field);
                       }
-                      if (val.dataFormat && typeof val.dataFormat === 'function') {
-                            innerRowData.push(val.dataFormat(fieldValue));
+                      if (column.dataFormat && typeof column.dataFormat === 'function') {
+                            innerRowData.push(column.dataFormat(fieldValue));
                         } else {
                             innerRowData.push(fieldValue);
                         }
@@ -90,6 +104,6 @@
                 }
                 return object;
             }
-        }
+        },
     }
 </script>
