@@ -118,3 +118,4 @@ Convert your data as an XLSX file
 | fileName      | String          | The name of excel file    |excel |
 | sheetName     | String          | The SheetName of excel file    |SheetName    |
 | fileType      | String          | The Type of excel file. (xlsx, xls)     |xlsx    |
+| fetch         | Function        | Function to call data from your api     |   |
