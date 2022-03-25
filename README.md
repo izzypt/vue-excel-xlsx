@@ -108,7 +108,12 @@ Convert your data as an XLSX file
                 return '$ ' + value;
             }
         }
+        
 ```
+####Introduced Changes with the current fork :
+ - Ability to fetch from API request
+ - Ability to use a callback function on columns object.
+
 #### Props
 
 | Name      | Type  | Description | Default Value|
