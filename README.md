@@ -114,23 +114,11 @@ Convert your data as an XLSX file
  - Ability to fetch from API request
  - Ability to use a callback function on columns object.
  
- ```
+ ```javascript
   excelColumns:[
                 {
                     label: "Start Date",
                     field: "node.startDate",
-                },
-                {
-                    label: "Department",
-                    field: "node.growthTask.plant.plantSpecies.name",
-                },
-                {
-                    label: "Plant Species",
-                    field: "node.growthTask.plant.plantSpecies.name",
-                },
-                {
-                    label: "Plant",
-                    field: "node.growthTask.plant.name",
                 },
                 {
                     label: "Next Phase",
@@ -144,19 +132,15 @@ Convert your data as an XLSX file
                     }
                 },
                 {
-                    label: "Note",
-                    field: "node.growthTask.note",
-                },
-                {
-                    label: "Pot Size",
-                    field: "node.growthTask.potSize.potSizeCm",
+                    label: "Pants Size",
+                    field: "node.Task.pantsSize.pantsSizeCm",
                 },
                 {
                     label: "Color",
                     field: {
                         callback : (value) => {
-                            if(value.node.growthTask.color != null)
-                                return value.node.growthTask.color.color
+                            if(value.node.Task.color != null)
+                                return value.node.Task.color.color
                         }
                     }
                 },
