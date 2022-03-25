@@ -113,6 +113,54 @@ Convert your data as an XLSX file
 #### Introduced Changes with the current fork :
  - Ability to fetch from API request
  - Ability to use a callback function on columns object.
+ 
+ ```
+  excelColumns:[
+                {
+                    label: "Start Date",
+                    field: "node.startDate",
+                },
+                {
+                    label: "Department",
+                    field: "node.growthTask.plant.plantSpecies.name",
+                },
+                {
+                    label: "Plant Species",
+                    field: "node.growthTask.plant.plantSpecies.name",
+                },
+                {
+                    label: "Plant",
+                    field: "node.growthTask.plant.name",
+                },
+                {
+                    label: "Next Phase",
+                    field: {
+                        callback : (value) => {
+                            if (value.node.isSalesPhase)
+                                return "Sales"
+                            else    
+                                return ("P" + value.node.phaseNo)
+                        }
+                    }
+                },
+                {
+                    label: "Note",
+                    field: "node.growthTask.note",
+                },
+                {
+                    label: "Pot Size",
+                    field: "node.growthTask.potSize.potSizeCm",
+                },
+                {
+                    label: "Color",
+                    field: {
+                        callback : (value) => {
+                            if(value.node.growthTask.color != null)
+                                return value.node.growthTask.color.color
+                        }
+                    }
+                },
+ ```
 
 #### Props
 
