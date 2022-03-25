@@ -110,7 +110,7 @@ Convert your data as an XLSX file
         }
         
 ```
-####Introduced Changes with the current fork :
+#### Introduced Changes with the current fork :
  - Ability to fetch from API request
  - Ability to use a callback function on columns object.
 
