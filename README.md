@@ -126,6 +126,7 @@ Convert your data as an XLSX file
 </template>
 
 <script>
+methods : {
     userRequestExcel() {
         this.isExportingExcel = true;
 
@@ -133,6 +134,7 @@ Convert your data as an XLSX file
 
         return response
     }
+}
 </script>
 ```
  - Ability to use a callback function on columns object.
