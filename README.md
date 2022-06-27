@@ -112,6 +112,29 @@ Convert your data as an XLSX file
 ```
 # Introduced Changes with the current fork :
  - Ability to fetch from API request
+
+```
+<template>
+            <vue-excel-xlsx
+                :fetch="userRequestExcel"
+                :columns="columns"
+                :file-name="'PlanningToolExport'"
+                :file-type="'xlsx'"
+                :sheet-name="'sheetname'"
+            >
+            </vue-excel-xlsx>
+</template>
+
+<script>
+        userRequestExcel() {
+            this.isExportingExcel = true;
+            
+            //insert your API request
+            
+            return response
+        }
+</script>
+```
  - Ability to use a callback function on columns object.
  
  ```javascript
