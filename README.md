@@ -115,24 +115,24 @@ Convert your data as an XLSX file
 
 ```
 <template>
-            <vue-excel-xlsx
-                :fetch="userRequestExcel"
-                :columns="columns"
-                :file-name="'PlanningToolExport'"
-                :file-type="'xlsx'"
-                :sheet-name="'sheetname'"
-            >
-            </vue-excel-xlsx>
+    <vue-excel-xlsx
+        :fetch="userRequestExcel"
+        :columns="columns"
+        :file-name="'PlanningToolExport'"
+        :file-type="'xlsx'"
+        :sheet-name="'sheetname'"
+    >
+    </vue-excel-xlsx>
 </template>
 
 <script>
-        userRequestExcel() {
-            this.isExportingExcel = true;
-            
-            //insert your API request
-            
-            return response
-        }
+    userRequestExcel() {
+        this.isExportingExcel = true;
+
+        //insert your API request
+
+        return response
+    }
 </script>
 ```
  - Ability to use a callback function on columns object.
